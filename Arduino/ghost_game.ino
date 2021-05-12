@@ -17,7 +17,7 @@ boolean waiting_for_input = true;
 
 void setup() {
   #ifdef SERIAL_LOG
-  Serial.begin(9600);
+    Serial.begin(9600);
   #endif
   
   pinMode(green_led, OUTPUT);
@@ -32,18 +32,18 @@ void lose() {
   digitalWrite(red_led, HIGH);
   if (score > high_score) {
     #ifdef SERIAL_LOG
-    Serial.println("New highscore!");
+      Serial.println("New highscore!");
     #endif
     high_score = score;
   } else {
     #ifdef SERIAL_LOG
-    Serial.print("Too bad, no new highscore. Highscore: ");
-    Serial.println(high_score);
+      Serial.print("Too bad, no new highscore. Highscore: ");
+      Serial.println(high_score);
     #endif
   }
   score = 0;
   #ifdef SERIAL_LOG
-  Serial.println("Lose");
+    Serial.println("Lose");
   #endif
   delay(1000);
   digitalWrite(red_led, LOW);
@@ -53,7 +53,7 @@ void win() {
   digitalWrite(green_led, HIGH);
   score += 1;
   #ifdef SERIAL_LOG
-  Serial.println("Win");
+    Serial.println("Win");
   #endif
   delay(1000);
   digitalWrite(green_led, LOW);
@@ -63,8 +63,8 @@ int get_random(int minr, int maxr) {
   randomSeed(millis() * 315.7);
   int i = random(minr, maxr);
   #ifdef SERIAL_LOG
-  Serial.print("Generated random number: ");
-  Serial.println(i);
+    Serial.print("Generated random number: ");
+    Serial.println(i);
   #endif
   return i;
 }
@@ -74,8 +74,8 @@ void check_input() {
     door_num = 1;
     waiting_for_input = false;
     #ifdef SERIAL_LOG
-    Serial.print("Pressed button ");
-    Serial.println("1");
+      Serial.print("Pressed button ");
+      Serial.println("1");
     #endif
     return;
   }
@@ -84,8 +84,8 @@ void check_input() {
     door_num = 2;
     waiting_for_input = false;
     #ifdef SERIAL_LOG
-    Serial.print("Pressed button ");
-    Serial.println("2");
+      Serial.print("Pressed button ");
+      Serial.println("2");
     #endif
     return;
   }
@@ -94,8 +94,8 @@ void check_input() {
     door_num = 3;
     waiting_for_input = false;
     #ifdef SERIAL_LOG
-    Serial.print("Pressed button ");
-    Serial.println("3");
+      Serial.print("Pressed button ");
+      Serial.println("3");
     #endif
     return;
   }
@@ -114,8 +114,8 @@ void loop() {
   }
 
   #ifdef SERIAL_LOG
-  Serial.print("Score: ");
-  Serial.println(score);
+    Serial.print("Score: ");
+    Serial.println(score);
   #endif
 
   waiting_for_input = true;
